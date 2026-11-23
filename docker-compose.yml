@@ -1,0 +1,14 @@
+services:
+  meterdigit:
+    build: .
+    image: meterdigit:latest
+    restart: unless-stopped
+    ports:
+      # nginx: car.houseofprizm.com → 127.0.0.1:43129
+      - "127.0.0.1:43129:43129"
+    environment:
+      - NODE_ENV=production
+      - PORT=43129
+      - HOSTNAME=0.0.0.0
+    tmpfs:
+      - /tmp
